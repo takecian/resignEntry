@@ -12,6 +12,8 @@ $(function() {
         }
     });
 
+    var count = 60;
+
     var Entry = Backbone.Model.extend({
         defaults: function() {
             return {
@@ -82,7 +84,7 @@ $(function() {
             this.listenTo(entries, 'all', this.render);
             this.collection.fetch({
                 data: {
-                    limit: 12,
+                    limit: count,
                     dataType: 'json'
                 }
             });
@@ -112,23 +114,23 @@ $(function() {
         initialize: function() {},
         getAll: function(e) {
             entries.reset();
-            entries.getLatest(0, 12);
+            entries.getLatest(0, count);
         },
         getWeb: function(e) {
             entries.reset();
-            entries.searchByCategory('WEB', 0, 12);
+            entries.searchByCategory('WEB', 0, count);
         },
         getMaker: function(e) {
             entries.reset();
-            entries.searchByCategory('MAKER', 0, 12);
+            entries.searchByCategory('MAKER', 0, count);
         },
         getMedia: function(e) {
             entries.reset();
-            entries.searchByCategory('MEDIA', 0, 12);
+            entries.searchByCategory('MEDIA', 0, count);
         },
         getOther: function(e) {
             entries.reset();
-            entries.searchByCategory('OTHER', 0, 12);
+            entries.searchByCategory('OTHER', 0, count);
         }
     });
 
