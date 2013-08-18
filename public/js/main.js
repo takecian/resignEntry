@@ -39,6 +39,16 @@ $(function() {
                 }
             });
         },
+        searchByCompany: function(company, offset, limit) {
+            this.fetch({
+                data: {
+                    company: company,
+                    offset: offset,
+                    limit: limit,
+                    dataType: 'json'
+                }
+            });
+        },
         getLatest: function(offset, limit) {
             this.fetch({
                 data: {
@@ -102,6 +112,91 @@ $(function() {
         render: function() {}
     });
 
+    var Company = Backbone.Model.extend({
+        defaults: function() {
+            return {
+                name: ""
+            };
+        }
+    });
+    var Companies = Backbone.Collection.extend({
+        model: Entry,
+        url: './api/companies',
+        initialize: function() {
+
+        },
+        getComapnies: function(offset, limit) {
+            this.fetch({
+                data: {
+                    dataType: 'json'
+                }
+            });
+        },
+        parse: function(resp) {
+        	var companyArray = [];
+        	resp.forEach(function(name){
+        		companyArray.push({name: name});
+        	});
+            return companyArray;
+        }
+    });
+
+  var CompanyView = Backbone.View.extend({
+        tagName: 'option',
+        class: 'company',
+        model: Company,
+        events: {
+            'click #img': 'onClick'
+        },
+        onClick: function(e) {
+            console.log(e.target.tagName + 'がクリックされた');
+        },
+        template: _.template($('#company-template').html()),
+        render: function() {
+            var data = this.model.toJSON();
+            var template = this.template(data);
+            this.$el.html(template);
+            return this;
+        }
+    });
+
+    var CompaniesView = Backbone.View.extend({
+        el: $('#commenu'),
+        tagName: 'div',
+        model: Company,
+        collection: null,
+        events: {
+            "change #companiesArea": "onSelected"
+        },
+        initialize: function() {
+            this.listenTo(companies, 'add', this.addOne);
+            this.listenTo(companies, 'reset', this.rerender);
+            this.listenTo(companies, 'all', this.render);
+            this.collection.fetch({
+                data: {
+                    dataType: 'json'
+                }
+            });
+        },
+        onSelected: function(){
+        	var companyName = $("#companiesArea option:selected").text();
+        	console.log(companyName + " selected.");
+            entries.reset();
+        	entries.searchByCompany(companyName, 0, count);
+        },
+        addOne: function(company) {
+            var view = new CompanyView({
+                model: company
+            });
+            $("#companiesArea").append(view.render().el);
+        },
+        rerender: function() {
+            $("#companiesArea").empty();
+            this.collection.each(this.addOne, this);
+        },
+        render: function() {}
+    });
+
     var MenuView = Backbone.View.extend({
         el: $('#menu'),
         events: {
@@ -111,7 +206,10 @@ $(function() {
             "click #media": "getMedia",
             "click #other": "getOther"
         },
-        initialize: function() {},
+        initialize: function() 
+        {
+
+        },
         getAll: function(e) {
             entries.reset();
             entries.getLatest(0, count);
@@ -137,6 +235,10 @@ $(function() {
     var entries = new Entries();
     var entriesView = new EntriesView({
         collection: entries
+    });
+    var companies = new Companies();
+    var companiesView = new CompaniesView({
+        collection: companies
     });
     var menuView = new MenuView();
  });

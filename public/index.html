@@ -21,13 +21,18 @@
                 </div>
             <div>
             <div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
-                <div class="well sidebar-nav">
+                <div class="sidebar-nav">
                     <ul class="nav" id="menu">
+                        <li>業界から選択</li>
                         <li><a href="#" id="all">すべて</a></li>
                         <li><a href="#" id="maker">メーカー系</a></li>
                         <li><a href="#" id="web">WEB・IT系</a></li>
                         <li><a href="#" id="media">広告・出版系</a></li>
                         <li><a href="#" id="other">その他</a></li>
+                    </ul>
+                    <ul class="nav" id="commenu">
+                        <li>企業名から選択</li>
+                        <SELECT id="companiesArea"></SELECT>
                     </ul>
                 </div><!--/.well -->
             </div><!--/sidebar-->
@@ -48,9 +53,10 @@
         <script type="text/template" id="entry-template">
             <div>
               <h2><a href="<%- url %>">"<%- title %>"</a><img src="http://b.hatena.ne.jp/entry/image/<%- url %>"></h2>
-              <p>"<%- date %>"</p>
+              <p><%- date %></p>
             </div>
         </script>
+        <script type="text/template" id="company-template"><%= name %></script>
 
         <script type="text/javascript" src="js/vendor/backbone-amd/backbone.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
