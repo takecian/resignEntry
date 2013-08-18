@@ -1,0 +1,3 @@
+db.entries.update({_id:ObjectId("")},{$set: {from: "" }});
+
+db.entries.update({from:"サイボウズ"},{$set: {from: "サイボウズ株式会社" }});

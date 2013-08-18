@@ -61,7 +61,7 @@ db.entries.insert(
 	title: 'クックパッド株式会社に転職していました - Kwappa談話室',
 	url: 'http://www.kwappa.net/blog/archives/1787',
 	from: '',
-	to: '',
+	to: 'クックパッド株式会社',
 	date: ISODate("2013-08-01T15:00:00Z"),
 	category: ["WEB"]
 }
@@ -96,7 +96,7 @@ db.entries.insert(
 {
 	title: 'サイボウズで学んだこと - IT戦記',
 	url: 'http://d.hatena.ne.jp/amachang/20100917/1284700700',
-	from: 'サイボウズ',
+	from: 'サイボウズ株式会社',
 	to: '',
 	date: ISODate("2010-09-17T15:00:00Z"),
 	category: ["WEB"]
@@ -114,7 +114,7 @@ db.entries.insert(
 {
 	title: 'Togetterの社長を辞任しました - UEI shi3zの日記',
 	url: 'http://d.hatena.ne.jp/shi3z/20130701/1372646792',
-	from: 'Google',
+	from: 'Togetter',
 	to: '',
 	date: ISODate("2013-07-01T15:00:00Z"),
 	category: ["WEB"]
