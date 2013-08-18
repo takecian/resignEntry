@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            退職系エントリまとめ
+        </title>
+        <script type="text/javascript" src="js/vendor/jquery/jquery.js"></script>
+        <script type="text/javascript" src="js/vendor/underscore-amd/underscore.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+    </head>
+    
+    <body>  
+        <div class="container">
+            <div class="row row-offcanvas row-offcanvas-right">
+                <div class="page-header">
+                    <h1>退職系エントリまとめ</h1>
+                    <p class="lead">最近よくみる退職・転職に関するエントリをまとめてみました.</p>
+                </div>
+            <div>
+            <div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                <div class="well sidebar-nav">
+                    <ul class="nav" id="menu">
+                        <li><a href="#" id="all">すべて</a></li>
+                        <li><a href="#" id="maker">メーカー系</a></li>
+                        <li><a href="#" id="web">WEB・IT系</a></li>
+                        <li><a href="#" id="media">広告・出版系</a></li>
+                        <li><a href="#" id="other">その他</a></li>
+                    </ul>
+                </div><!--/.well -->
+            </div><!--/sidebar-->
+
+            <div class="col-xs-14 col-sm-10">
+                <div class="row" id="dataArea">
+                </div><!--/row-->
+            </div><!--/span-->
+
+    <!--         <iframe class="col-md-9 autoHeight" id="webview" src="http://www.kwappa.net/blog/archives/1787"/>
+    -->     
+<!--             <footer>
+                <p>© t-fjk 2013</p>
+            </footer>
+ -->        </div>
+
+        <!-- Load JS here for backbone=============================-->
+        <script type="text/template" id="entry-template">
+            <div>
+              <h2><a href="<%- url %>">"<%- title %>"</a><img src="http://b.hatena.ne.jp/entry/image/<%- url %>"></h2>
+              <p>"<%- date %>"</p>
+            </div>
+        </script>
+
+        <script type="text/javascript" src="js/vendor/backbone-amd/backbone.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
