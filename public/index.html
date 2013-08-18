@@ -17,7 +17,7 @@
             <div class="row row-offcanvas row-offcanvas-right">
                 <div class="page-header">
                     <h1>退職系エントリまとめ</h1>
-                    <p class="lead">最近よくみる退職・転職に関するエントリをまとめてみました.</p>
+                    <p class="lead">最近よくみる退職・転職に関するエントリをまとめてみました.このサイトのソースコードは<a href="https://github.com/t-fujiki/quitEntry">こちら</a>。</p>
                 </div>
             <div>
             <div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
@@ -52,7 +52,7 @@
         <!-- Load JS here for backbone=============================-->
         <script type="text/template" id="entry-template">
             <div>
-              <h2><a href="<%- url %>">"<%- title %>"</a><img src="http://b.hatena.ne.jp/entry/image/<%- url %>"></h2>
+              <h2><a target="_blank" href="<%- url %>">"<%- title %>"</a><img src="http://b.hatena.ne.jp/entry/image/<%- url %>"></h2>
               <p><%- date %></p>
             </div>
         </script>
