@@ -1,3 +1,5 @@
 db.entries.update({_id:ObjectId("")},{$set: {from: "" }});
 
 db.entries.update({from:"サイボウズ"},{$set: {from: "サイボウズ株式会社" }});
+
+db.entries.update({_id:ObjectId("5210a35c3a83ee78a30e47ee")},{$set: {url: "http://www.itmedia.co.jp/news/articles/1102/10/news090.html" }});

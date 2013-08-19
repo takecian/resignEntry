@@ -71,6 +71,7 @@ function findEntry(condition, req, res) {
     console.log('findEntry');
     var offset = req.query.offset || 0;
     var limit = req.query.limit || 6;
+    var order = req.query.order || -1;
     console.log('offset = ' + offset + ', limit = ' + limit);
 
     var con = getConnection();
@@ -79,9 +80,9 @@ function findEntry(condition, req, res) {
 	    console.log('findEntry1');
         dump(condition);
         var entries = con.model(NAME_RECORD);
-        entries.find(condition).skip(offset).limit(limit).exec(function(err, result) {
+        entries.find(condition).skip(offset).limit(limit).sort({date: order}).exec(function(err, result) {
 	        console.log('findEntry2');
-        if (!err) {
+	        if (!err) {
                 console.log('success to get entires. = ' + result);
                 res.send(result);
             } else {
@@ -97,7 +98,7 @@ function findCompanies(req, res) {
     var con = getConnection();
     connectDB(con, function() {
         var entries = con.model(NAME_RECORD);
-        entries.distinct("from", function(err, result) {
+        entries.distinct("from").exec(function(err, result) {
             if (!err) {
                 console.log('success to get companies. = ' + result);
                 findAndRemove(result, '');
