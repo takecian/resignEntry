@@ -29,7 +29,6 @@ var schema = new mongoose.Schema({
         required: false
     }
 });
-    console.log('new Schema');
 
 // create object
 module.exports = mongoose.model(NAME_RECORD, schema);
