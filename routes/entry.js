@@ -2,40 +2,10 @@
 /*
  * GET users listing.
  */
+var Post = require('../models/post.js');
 
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 var util = require('util');
-
-NAME_RECORD = 'entry';
-
-var schema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
-    url: {
-        type: String,
-        required: true
-    },
-    from: {
-        type: String,
-        required: false
-    },
-    to: {
-        type: String,
-        required: false
-    },
-    date: {
-        type: Date,
-        required: false
-    },
-    category: {
-        type: Array,
-        required: false
-    }
-});
-// create object
-mongoose.model(NAME_RECORD, schema); /*********************************/
 
 function dump(v) {
     return console.log(util.inspect(v));
@@ -52,53 +22,28 @@ function findAndRemove(array, value) {
    });
 }
 
-function getConnection(){
-    var uri = process.env.MONGOHQ_URL || 'mongodb://localhost/quitEntry';
-    // mongoose.connect(uri); 
-    // var db = mongoose.connection;
-	var con = mongoose.createConnection(uri);
-	return con;	
-}
-
-function connectDB(con, callback) {
-    console.log('connectDB2');
-    con.on('error', console.error.bind(console, 'connection error:'));
-    con.once('open', callback);
-    console.log('connectDB3');
-}
-
 function findEntry(condition, req, res) {
-    console.log('findEntry');
+    console.log('[IN]findEntry');
     var offset = req.query.offset || 0;
     var limit = req.query.limit || 6;
     var order = req.query.order || -1;
     console.log('offset = ' + offset + ', limit = ' + limit);
 
-    var con = getConnection();
-
-    connectDB(con, function() {
-	    console.log('findEntry1');
-        dump(condition);
-        var entries = con.model(NAME_RECORD);
-        entries.find(condition).skip(offset).limit(limit).sort({date: order}).exec(function(err, result) {
-	        console.log('findEntry2');
+    Post.find(condition).skip(offset).limit(limit).sort({date: order}).exec(function(err, result) {
 	        if (!err) {
                 console.log('success to get entires. = ' + result);
                 res.send(result);
             } else {
                 console.log('fail try to get entries.');
             }
-            con.close();
         });
-    });
+    console.log('[OUT]findEntry');
 }
 
 function findCompanies(req, res) {
     console.log('findCompanies');
-    var con = getConnection();
-    connectDB(con, function() {
-        var entries = con.model(NAME_RECORD);
-        entries.distinct("from").exec(function(err, result) {
+
+    Post.distinct("from").exec(function(err, result) {
             if (!err) {
                 console.log('success to get companies. = ' + result);
                 findAndRemove(result, '');
@@ -106,35 +51,23 @@ function findCompanies(req, res) {
             } else {
                 console.log('fail to get companies.');
             }
-            con.close();
         });
-    });
 }
 
 function addEntry(req, res) {
     var title = req.query.title;
     var url = req.query.url;
     var from = req.query.from;
-    var date = new Date(2013,4,1);
+    var date = Date.now;
     console.log('addEntry: title = ' + title + ', url = ' + url);
 
-    var con = getConnection();
-    connectDB(con, function() {
-        var Record = con.model(NAME_RECORD);
-        var newEntry = new Record({
-        	title: title,
-        	url: url,
-        	date: date
-        });
-        newEntry.save(function(err) {
-            if (!err) {
-                console.log('success try to get all gif.');
-            } else {
-                console.log('fail try to get all, err = ' + err);
-            }
-            con.close();
-        });
-    });
+    Post.save(function(err) {
+        if (!err) {
+            console.log('success try to get all gif.');
+        } else {
+            console.log('fail try to get all, err = ' + err);
+        }
+    }); 
 }
 
 exports.search = function(req, res){

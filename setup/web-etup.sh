@@ -119,5 +119,58 @@ db.entries.insert(
 	date: ISODate("2013-07-01T15:00:00Z"),
 	category: ["WEB"]
 }
+,
+{
+	title: 'サイバーエージェントを退職しました - 道玄坂で働くデータサイエンティストのブログ',
+	url: 'http://tjo.hatenablog.com/entry/2013/06/24/180020',
+	from: 'サイバーエージェント株式会社',
+	to: '',
+	date: ISODate("2013-06-24T15:00:00Z"),
+	category: ["WEB"]
+},
+{
+	title: 'DeNAを退職しました - yokkunsの日記',
+	url: 'http://d.hatena.ne.jp/yokkuns/20130630/1372592767',
+	from: 'DeNA株式会社',
+	to: '',
+	date: ISODate("2013-06-24T15:00:00Z"),
+	category: ["WEB"]
+}
+,
+{
+	title: '株式会社ミクシィを退職していました - adtech周辺に興味がある人の四方山話',
+	url: 'http://rindai87.github.io/blog/2013/07/11/leave-mixi/',
+	from: '株式会社ミクシィ',
+	to: '',
+	date: ISODate("2013-07-11T15:00:00Z"),
+	category: ["WEB"]
+}
+,
+{
+	title: '天使やカイザーと呼ばれて » ミクシィ社を退職しました',
+	url: 'http://www.eisbahn.jp/yoichiro/2013/02/retire-from-mixi.html',
+	from: '株式会社ミクシィ',
+	to: '',
+	date: ISODate("2013-02-03T15:00:00Z"),
+	category: ["WEB"]
+}
+,
+{
+	title: 'クックパッドに入社しました。 | realsuger.log',
+	url: 'http://pollo.tostada.org/?p=714',
+	from: '',
+	to: 'クックパッド株式会社',
+	date: ISODate("2013-02-02T15:00:00Z"),
+	category: ["WEB"]
+}
+,
+{
+	title: "株式会社ドワンゴを退職しました。 - shoishikawa's diary",
+	url: 'http://shoishikawa.hatenablog.jp/entry/2012/09/28/150349',
+	from: '株式会社ドワンゴ',
+	to: '',
+	date: ISODate("2013-02-02T15:00:00Z"),
+	category: ["WEB"]
+}
 ]);
 

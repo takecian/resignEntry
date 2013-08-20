@@ -20,5 +20,15 @@ db.entries.insert(
 	date: ISODate("2007-12-27T15:00:00Z"),
 	category: ["MAKER"]
 }
+,
+{
+	title: 'Happy Hacking Days: 三菱を去る日',
+	url: 'http://taisyoku.tsunamayo.net/entries?page=22',
+	from: '三菱電機株式会社',
+	to: '',
+	date: ISODate("2012-01-31T15:00:00Z"),
+	category: ["MAKER"]
+}
+
 ]);
 

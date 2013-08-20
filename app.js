@@ -27,6 +27,10 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
+var mongoose = require('mongoose');
+var uri = process.env.MONGOHQ_URL || 'mongodb://localhost/quitEntry';
+mongoose.connect(uri); 
+
 app.get('/', function(req, res) {
     res.sendfile(path.join(__dirname, 'public') + '/index.html');
 });
