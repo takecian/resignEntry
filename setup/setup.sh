@@ -113,6 +113,7 @@ db.entries.insert(
 ,
 {
 	title: 'Togetterの社長を辞任しました - UEI shi3zの日記',
+	title: 'Togetterの社長を辞任しました - UEI shi3zの日記',
 	url: 'http://d.hatena.ne.jp/shi3z/20130701/1372646792',
 	from: 'Google',
 	to: '',

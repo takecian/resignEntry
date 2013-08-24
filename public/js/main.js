@@ -12,6 +12,12 @@ $(function() {
         }
     });
 
+$(document).ready(function(){
+	$('.datepicker').datepicker({
+		language: 'ja',
+		setDate: Date.now,
+	});
+});
     var count = 60;
 
     var Entry = Backbone.Model.extend({

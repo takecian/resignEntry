@@ -38,7 +38,7 @@ app.get('/', function(req, res) {
 //app.get('/', routes.index);
 app.get('/api/search', entry.search);
 app.get('/api/companies', entry.companies);
-app.get('/api/add', entry.add);
+app.post('/api/add', entry.add);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

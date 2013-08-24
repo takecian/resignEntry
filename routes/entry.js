@@ -55,19 +55,15 @@ function findCompanies(req, res) {
 }
 
 function addEntry(req, res) {
-    var title = req.query.title;
-    var url = req.query.url;
-    var from = req.query.from;
-    var date = Date.now;
-    console.log('addEntry: title = ' + title + ', url = ' + url);
-
-    Post.save(function(err) {
-        if (!err) {
-            console.log('success try to get all gif.');
-        } else {
-            console.log('fail try to get all, err = ' + err);
-        }
-    }); 
+    var title = req.body.title;
+    var url = req.body.url;
+    var from = req.body.from;
+    var to = req.body.to;
+    var category = req.body.category;
+    var date = req.body.date || Date.now();
+    console.log('[IN]addEntry: title = ' + title + ', url = ' + url);
+    new Post({title: title, url: url, from: from, to: to, date: date, category: [category]}).save();
+    console.log('[OUT]addEntry: title = ' + title + ', url = ' + url);
 }
 
 exports.search = function(req, res){

@@ -10,6 +10,10 @@
         <script type="text/javascript" src="js/vendor/jquery/jquery.js"></script>
         <script type="text/javascript" src="js/vendor/underscore-amd/underscore.js"></script>
         <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="css/datepicker.css">
+        <script type="text/javascript" src="js/vendor/bootstrap-datepicker.js"></script>
+
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
     </head>
     
@@ -36,6 +40,8 @@
                         <SELECT id="companiesArea"></SELECT>
                     </ul>
                 </div><!--/.well -->
+                <a type="button" class="btn" style="width:100%;" href="#test_modal" data-toggle="modal">エントリを追加する</a>
+
             </div><!--/sidebar-->
 
             <div class="col-xs-14 col-sm-10">
@@ -43,6 +49,48 @@
                 </div><!--/row-->
             </div><!--/span-->
 
+            <div id="test_modal" class="modal fade">
+                <form class="form-horizontal" action="/api/add" method="POST">
+                  <div class="control-group">
+                    <label class="control-label" for="inputTitle">Title</label>
+                    <div class="controls">
+                      <input type="text" id="inputTitle" placeholder="Title" name="title">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="inputUrl">Url</label>
+                    <div class="controls">
+                      <input type="text" id="inputUrl" placeholder="Url" name="url">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="inputFrom">From</label>
+                    <div class="controls">
+                      <input type="text" id="inputFrom" placeholder="From" name="from">
+                    </div>
+                    <label class="control-label" for="inputTo">To</label>
+                    <div class="controls">
+                      <input type="text" id="inputTo" placeholder="To" name="to">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                      <p>カテゴリ：
+                    <input type="radio" name="category" value="MAKER" checked="checked" />メーカー系 
+                    <input type="radio" name="category" value="WEB" />WEB・IT系 
+                    <input type="radio" name="category" value="MEDIA" />広告・出版系
+                    <input type="radio" name="category" value="OTHER" />その他
+                    </p>
+                  </div>
+                  <div class="control-group">
+                    <input type="text" class="datepicker" name="date">
+                  </div>
+                  <div class="control-group">
+                    <div class="controls">
+                      <button type="submit" class="btn">追加</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
     <!--         <iframe class="col-md-9 autoHeight" id="webview" src="http://www.kwappa.net/blog/archives/1787"/>
     -->     
 <!--             <footer>
